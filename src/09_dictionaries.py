@@ -34,11 +34,15 @@ waypoints = [
 ]
 
 # Add a new waypoint to the list
-# YOUR CODE HERE
+waypoints.append({"lat": 42, "lon": -125, "name": "an appended place"})
 
 # Modify the dictionary with name "a place" such that its longitude
 # value is -130 and change its name to "not a real place"
-# YOUR CODE HERE
+waypoints[0] = {'lat': 43, 'lon': -130, 'name': 'not a real place'}
 
 # Write a loop that prints out all the field values for all the waypoints
-# YOUR CODE HERE
+for count, i in enumerate(waypoints):
+    print(f"Waypoint #{count+1}")
+    print(f"lat: {i['lat']}")
+    print(f"lon: {i['lon']}")
+    print(f"name: {i['name']}")

@@ -21,4 +21,13 @@ and does the following:
 
 import sys
 import calendar
-from datetime import datetime
+from datetime import datetime as dt
+now = dt.now()
+
+def print_calendar(month, year = now.year):
+    '''Returns calendar for a given month and year'''
+    c = calendar.TextCalendar(calendar.SUNDAY)
+    str_cal = c.formatmonth(year, month)
+    print (str_cal)
+
+print_calendar(12,1977)
