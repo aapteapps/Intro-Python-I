@@ -22,12 +22,44 @@ and does the following:
 import sys
 import calendar
 from datetime import datetime as dt
-now = dt.now()
+args = sys.argv
+# print(args)
 
-def print_calendar(month, year = now.year):
+now = dt.now()
+MAX_YEAR = 10000
+MIN_YEAR = 0
+
+def print_calendar(month, year):
     '''Returns calendar for a given month and year'''
     c = calendar.TextCalendar(calendar.SUNDAY)
     str_cal = c.formatmonth(year, month)
-    print (str_cal)
+    print ("\n",str_cal)
 
-print_calendar(12,1977)
+def month_check(month):
+    if month > 12 or month < 1:
+        return False
+    else:
+        return True
+
+def year_check(year):
+    if year > MAX_YEAR or year < MIN_YEAR:
+        return False
+    else:
+        return True        
+
+if len(args) == 2:
+    month = int(args[1])
+    year = now.year
+
+elif len(args) == 3:
+    month = int(args[1])
+    year = int(args[2])
+
+# calendar.TextCalendar.prmonth(theyear=year, themonth=month)
+if month_check(month) == False:
+    print('Invalid Month, select a month between 1 and 12.')
+if year_check(year) == False:
+    print(f'Invalid Year, select a year between {MIN_YEAR} and {MAX_YEAR}.')
+
+if month_check(month) and year_check(year):
+    print_calendar(month,year)
